@@ -1,0 +1,71 @@
+{% extends 'store/index.htm' %}
+{%load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class=" h3 text-uppercase font-weight-bold">Billing Information</div>
+        <br>
+        <hr>
+     <form action="" >
+        <div class="row" id="user-info">
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="name" id="" placeholder="Name">
+            </div>
+            <div class="col-sm-6">
+                <input class="form-control" type="email" name="email" id="" placeholder="Email">
+            </div>
+        </div>
+        <br>
+        <div class="row" id="shipping-info">
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="address" id="" placeholder="Address">
+            </div>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="city" id="" placeholder="City">
+            </div>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="state" id="" placeholder="State">
+            </div>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" name="zipcode" id="" placeholder="Zip Code">
+            </div>
+        </div>
+        <br>
+        <div class="text-center"><button class="btn btn-info btn-block w-100" id="form-btn" type="submit">Continue</button></div>
+     </form>
+    </div>
+    <div class="col-lg-6">
+        <div id="order-summary">
+            <a href="{% url 'cart'%}" class="btn btn-outline-info">
+                <i class="fas fa-arrow-left    "></i>
+                Back to Cart
+            </a>
+            <br>
+            <h3 class="h3">Order Summary</h3>
+            <hr>
+            <table class="table">
+                <thead class="thead-light">
+                    <th><div class="img"></div></th>
+                    <th>product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </thead>
+                <tbody class="tbody">
+                    {% for item in items %}
+                    <tr>
+                        <td ><img style="width: 100px;" src="{{item.product.imageURL}}" alt=""></td>
+                        <td>{{item.product.name}}</td>
+                        <td>&#x20B5;{{item.product.price}}</td>
+                        <td>x{{item.quantity}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h5 class="h4">Items: {{order.get_cart_items}}</h5>
+            <h4 class="h5">Total: &#x20B5;{{order.get_cart_total | floatformat:2}}</h4>
+        </div>
+    </div>
+     
+</div>
+{% endblock content %}

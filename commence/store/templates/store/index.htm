@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommence - {{title}}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}">
+</head>
+<body>
+    {% include 'store/navbar.htm' %}
+    <hr>
+
+    <div class="container">
+        {% block content %}
+        
+        {% endblock content %}
+    </div>
+    <footer class="bg-dark d-flex justify-content-center fixed-bottom">
+        <a href="{%static 'docs/policy.docx'%}">Terms and Privacy Policy</a>
+    </footer>
+    <script src="{% static 'js/jquery.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/all.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/cart.js'%}"></script>
+</body>
+</html>
